@@ -35,4 +35,4 @@ class get_top_committees(Resource):
 		repository=Repository(args_parser['org'],args_parser['repo'])
 		top_committees=repository.get_top_contributors(args_parser['committees'])
 		
-		return jsonify(top_committees)
+		return jsonify([top_committees])

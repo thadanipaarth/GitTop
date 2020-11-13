@@ -15,7 +15,7 @@ errors={
 
 app= Flask(__name__)
 api=Api(app)
-
+app.config['JSON_SORT_KEYS']=False
 ## Handling the 404 Not Found error, and returning the custom message
 @app.errorhandler(404)
 def resource_not_found(Resource):
@@ -26,7 +26,7 @@ resources={
 	"api_information": "https://git-top.herokuapp.com/",
 	"top_respository":"https://git-top.herokuapp.com/get_top_repositories",
 	"top_committies":"https://git-top.herokuapp.com/get_top_committees",
-	"top_respositories_and_top_committies":"https://git-top.herokuapp.com/top_respositories_and_top_committies",
+	"top_respositories_and_top_committies":"https://git-top.herokuapp.com/get_top_repo_committees",
 	"documentation": "https://github.com/thadanipaarth/GitTop"
 
 }

@@ -42,7 +42,7 @@ class get_top_repo_committees(Resource):
 		args_parser=parser.parse_args()
 		valid=check_valid_parameter(args_parser['parameter'])
 		if valid!=None:
-			return jsonify(valid)
+			return jsonify([valid])
 
 		organization=Organization(args_parser['org'],args_parser['parameter'])
 		top_repositries=organization.get_top_repositories(args_parser['repo'])
@@ -51,4 +51,4 @@ class get_top_repo_committees(Resource):
 			repository=Repository(args_parser['org'],each['name'])
 			top_committees=repository.get_top_contributors(args_parser['committees'])
 			each['top_committees']=top_committees
-		return jsonify(top_repositries)
+		return jsonify([top_repositries])

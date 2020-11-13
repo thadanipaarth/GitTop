@@ -40,4 +40,4 @@ class get_top_repositories(Resource):
 		organization=Organization(args_parser['org'],args_parser['parameter'])
 		top_repositries=organization.get_top_repositories(args_parser['repo'])
 		
-		return jsonify(top_repositries)
+		return jsonify([top_repositries])
