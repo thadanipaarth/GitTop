@@ -2,7 +2,7 @@
 
 GitTop is a REST API that return the top repositories and committees by using different GitHub parameters like forks, commits, addition, deletetions as applicable. As of now, only fork parameter has been implemented. Additions are welcomed!
 
-The current version of API has been hosted on [Heroku](http://git-top.herokuapp.com/)
+The current version of API has been hosted on [git-top.herokuapp.com](http://git-top.herokuapp.com/)
 
 ### Installation
 1. Navigate to the main directory in the command prompt
@@ -26,7 +26,7 @@ The current version of API has been hosted on [Heroku](http://git-top.herokuapp.
 > 3. committees: number of top results the user wishes
 >
 > Sample Query: http://git-top.herokuapp.com/get_top_committees?org=google&repo=libphonenumber&committees=5
-4. `/get_top_repo_committees`
+4. `/get_top_repo_committees` : To get the top committees of every top repository of an organization
 > Mandatory Arguments:
 > 1. org: defines the name of the organization that is owner of the repository
 > 2. repo: number of top results the user wishes
