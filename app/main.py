@@ -51,5 +51,5 @@ from app.resources.get_top_repo_committees import get_top_repo_committees
 api.add_resource(get_top_repo_committees,'/get_top_repo_committees')
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=False)
 
