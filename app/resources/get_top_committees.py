@@ -2,13 +2,13 @@
 # This file contains all the code related to the /get_top_committees resource
 #------------------------------------------------------------------------------
 
-from app.resources.repository import Repository
+from app.utilities.repository import Repository
 from flask import jsonify
 from flask_restful import reqparse 
 from app.main import app, Resource
 
 class get_top_committees(Resource):
-	def post(self):
+	def get(self):
 
 		# Specifying the required arguments and their help message in case the have not been provided
 		parser= reqparse.RequestParser()

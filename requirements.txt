@@ -14,6 +14,7 @@ lxml==4.6.1
 MarkupSafe==1.1.1
 pytz==2020.4
 requests==2.25.0
+requests-auth==5.2.0
 six==1.15.0
 soupsieve==2.0.1
 urllib3==1.26.2
