@@ -35,7 +35,7 @@ class get_top_repositories(Resource):
 		args_parser=parser.parse_args()
 		valid=check_valid_parameter(args_parser['parameter'])	
 		if valid!=None:
-			return jsonif(valid)
+			return jsonify(valid)
 			
 		organization=Organization(args_parser['org'],args_parser['parameter'])
 		top_repositries=organization.get_top_repositories(args_parser['repo'])
