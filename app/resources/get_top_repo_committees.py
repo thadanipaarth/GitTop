@@ -1,13 +1,14 @@
 #------------------------------------------------------------------------------
-# This file contains all the code related to the /get_top_committees resource
+# This file contains all the code related to the /get_top_repo_committees resource
 #------------------------------------------------------------------------------
 
 from app.resources.repository import Repository
+from app.resources.organization import Organization
 from flask import jsonify
 from flask_restful import reqparse 
 from app.main import app, Resource
 
-class get_top_committees(Resource):
+class get_top_repo_committees(Resource):
 	def post(self):
 
 		# Specifying the required arguments and their help message in case the have not been provided
@@ -20,9 +21,9 @@ class get_top_committees(Resource):
 			)
 		parser.add_argument(
 			'repo',
-			type=str,
+			type=int,
 			required=True,
-			help="Bad Request, repository cannot be blank",
+			help="Bad Request, Number of repository cannot be blank",
 			)
 		parser.add_argument(
 			'committees',
@@ -32,7 +33,11 @@ class get_top_committees(Resource):
 			)
 		
 		args_parser=parser.parse_args()
-		repository=Repository(args_parser['org'],args_parser['repo'])
-		top_committees=repository.get_top_contributors(args_parser['committees'])
+		organization=Organization(args_parser['org'])
+		top_repositries=organization.get_top_repositories_fork(args_parser['repo'])
 		
-		return jsonify(top_committees)
+		for each in top_repositries['data']:
+			repository=Repository(args_parser['org'],each['name'])
+			top_committees=repository.get_top_contributors(args_parser['committees'])
+			each['top_committees']=top_committees
+		return jsonify(top_repositries)

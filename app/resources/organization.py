@@ -12,13 +12,13 @@ class Organization:
 	#class constructor
 	def __init__(self,name_of_organization):
 		self.name=name_of_organization
-		self.request_link="https://api.github.com/search/repositories?q=user:"+self.name+"&per_page=100&sort=forks&order=desc"
+		self.request_link_fork="https://api.github.com/search/repositories?q=user:"+self.name+"&per_page=100&sort=forks&order=desc"
 
 	def get_request_url(self,page_number):
-		return self.request_link+"&page="+str(page_number)
+		return self.request_link_fork+"&page="+str(page_number)
 
 	#This function returns the top_respositores with their forks and contributors url for further processing
-	def get_top_repositories(self,repo_number):
+	def get_top_repositories_fork(self,repo_number):
 		top_repositories={}
 
 		top_repositories['data']=[]
@@ -51,9 +51,11 @@ class Organization:
 					}
 				)
 			page_number=page_number+1
-
-		top_repositories['number_of_repositories']=len(top_repositories['data'])
-		top_repositories['matched_with_query_repository_number']=(top_repositories['number_of_repositories'] == repo_number) #This quantity reflects if the number of repositories to fecthed (passed to the function) are obtained
+		try:
+			top_repositories['number_of_repositories']=len(top_repositories['data'])
+			top_repositories['matched_with_query_repository_number']=(top_repositories['number_of_repositories'] == repo_number) #This quantity reflects if the number of repositories to fecthed (passed to the function) are obtained
+		except:
+			None
 		top_repositories['organization']=self.name
 
 		return top_repositories

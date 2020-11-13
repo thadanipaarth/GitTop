@@ -25,8 +25,7 @@ class Repository:
 		while len(top_contributors['data'])<number_of_committees:
 			response=requests.get(self.generate_request_link(page_number))
 			json_object=json.loads(response.content)
-			print(json_object)
-
+	
 			if int(response.status_code/100) == 4:
 				top_contributors['request_code']=400
 				top_contributors['message']=json_object['message']
@@ -47,7 +46,9 @@ class Repository:
 					})
 
 			page_number=page_number+1
-		top_contributors['number_of_results']=len(top_contributors['data'])
-		top_contributors['matched_with_query_repository_number'] =(top_contributors['number_of_results']==number_of_committees)
-
+		try:
+			top_contributors['number_of_results']=len(top_contributors['data'])
+			top_contributors['matched_with_query_repository_number'] =(top_contributors['number_of_results']==number_of_committees)
+		except:
+			None
 		return top_contributors
