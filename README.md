@@ -18,7 +18,7 @@ The current version of API has been hosted on [git-top.herokuapp.com](http://git
 > 2. repo: number of top results the user wishes
 > 3. parameter: the order by which the repositories should be ordered
 >
-> Sample Query: http://git-top.herokuapp.com/get_top_repositories?parameter=fork&org=google&repo=6
+> Sample Query: http://git-top.herokuapp.com/get_top_repositories?parameter=forks&org=google&repo=6
 3. `/get_top_committees` : To get the top committees of a particular repository.
 > Mandatory Arguments:
 > 1. org: defines the name of the organization that is owner of the repository
@@ -32,4 +32,4 @@ The current version of API has been hosted on [git-top.herokuapp.com](http://git
 > 2. repo: number of top results the user wishes
 > 3. committees: number of top committees the user wishesfor each repository
 >
-> Sample Query: http://git-top.herokuapp.com/get_top_repo_committees?parameter=fork&org=google&repo=5&committees=2
+> Sample Query: http://git-top.herokuapp.com/get_top_repo_committees?parameter=forks&org=google&repo=5&committees=2
